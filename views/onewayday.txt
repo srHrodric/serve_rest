@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Accounts Payable Alert</title>
+  <style>
+    /* Add some basic styling to our alert box */
+    #alert-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      padding: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Create a hidden alert box -->
+  <div id="alert-box">
+    <h2>Accounts Payable Alert</h2>
+    <ul id="accounts-list"></ul>
+  </div>
+
+  <script>
+    // Set the interval to run once a day at 8am
+    setInterval(function() {
+      var now = new Date();
+      var hour = now.getHours();
+      var minute = now.getMinutes();
+      if (hour === 8 && minute === 0) {
+        // Get all accounts payable data (replace with your actual data source)
+        var accountsPayable = [
+          { id: 1, name: "Account 1", amount: 100 },
+          { id: 2, name: "Account 2", amount: 200 },
+          { id: 3, name: "Account 3", amount: 300 }
+        ];
+
+        // Create the alert box content
+        var alertBox = document.getElementById("alert-box");
+        var accountsList = document.getElementById("accounts-list");
+        accountsList.innerHTML = "";
+        accountsPayable.forEach(function(account) {
+          var listItem = document.createElement("li");
+          listItem.textContent = `Account ${account.name}: ${account.amount}`;
+          accountsList.appendChild(listItem);
+        });
+
+        // Show the alert box
+        alertBox.style.display = "block";
+      }
+    }, 1000 * 60 * 60 * 24); // Run once a day
+  </script>
+</body>
+</html>

@@ -14,7 +14,7 @@ $console.success('This is a SUCCESS message');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if(1 === 1){res.render('index', { title: 'Express' });}
+  if(1 === 2){res.render('index', { title: 'Express' });}
   else{res.send('respond with a resource');}
 });
 
